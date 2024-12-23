@@ -205,13 +205,17 @@ const sleep = (ms: number) => {
                 } catch (e) {
                     console.log('Error when running 5 min background inner loop');
                     console.log(e);
-                    console.log(e.stack);
+                    if (e instanceof Error) {
+                        console.log(e.stack);
+                    }
                 }
             }
         } catch (e) {
             console.log('-Error when running 5 min background loop');
             console.log(e);
-            console.log(e.stack);
+            if (e instanceof Error) {
+                console.log(e.stack);
+            }
         }
     }
 })();

@@ -8,7 +8,7 @@ var kumo = new Kumo(cfg);
 
 const args = neodoc.run(`
 usage: kumoCmd.js room <room> mode ( off | heat | cool | dry | vent | auto )
-       kumoCmd.js room <room> fan ( quiet | low | powerful | super | auto )
+       kumoCmd.js room <room> fan ( superQuiet | quiet | low | powerful | super | auto )
        kumoCmd.js room <room> vent [ auto | horizontal | midhorizontal | midpoint | midvertical | vertical | swing ]
        kumoCmd.js room <room> status
        kumoCmd.js room <room> cool temp <temp>
@@ -44,7 +44,9 @@ async function processCmd(args:any) {
             return res;
         } else if ('fan' in args && args['fan']) {
             let cmd = '';
-            if ('quiet' in args) {
+            if ('superQuiet' in args) {
+                cmd = 'superQuiet'
+            } else if ('quiet' in args) {
                 cmd = 'quiet'
             } else if ('low' in args) {
                 cmd = 'low'

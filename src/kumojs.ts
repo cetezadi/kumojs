@@ -157,7 +157,7 @@ export class Kumo {
         return this.cmd(address, c)
     }
     public async setFanSpeed(address:string, speed:string): Promise<any> {
-        if (['quiet', 'low', 'powerful', 'auto', 'superPowerful'].indexOf(speed) < 0) {
+        if (['superQuiet', 'quiet', 'low', 'powerful', 'auto', 'superPowerful'].indexOf(speed) < 0) {
             throw new TypeError("Invalid Fan Speed:"+speed);
         }
         let c:string = JSON.stringify({"c":{"indoorUnit":{"status":{"fanSpeed":speed}}}});
